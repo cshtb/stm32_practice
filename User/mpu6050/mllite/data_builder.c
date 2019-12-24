@@ -1022,6 +1022,11 @@ void inv_get_accel_set(long *data, int8_t *accuracy, inv_time_t *timestamp)
 {
     if (data != NULL) {
         memcpy(data, sensors.accel.calibrated, sizeof(sensors.accel.calibrated));// 定义为三个数组   long calibrated[3];
+				/*函数原型：void *memcpy(void *destin, void *source, unsigned n);
+				*destin-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+				*source-- 指向要复制的数据源，类型强制转换为 void* 指针
+				*n-- 要被复制的字节数
+				*/
     }
     if (timestamp != NULL) {
         *timestamp = sensors.accel.timestamp;

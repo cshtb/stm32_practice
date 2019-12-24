@@ -316,6 +316,7 @@ static void read_from_mpl(void)//从陀螺仪中读取数据
 
 			
 				/*获取欧拉角*/
+
 			  if (inv_get_sensor_type_euler(data, &accuracy,(inv_time_t*)&timestamp))
 						{
 																		
@@ -358,6 +359,7 @@ static void read_from_mpl(void)//从陀螺仪中读取数据
     if(1)
     {
 				char cStr_1 [ 70 ];
+				char cStr_2 [70];
 				unsigned long timestamp_1,step_count_1,walk_time_1;
 
 			
@@ -386,6 +388,26 @@ static void read_from_mpl(void)//从陀螺仪中读取数据
 									printf("%s \n", (uint8_t* )cStr_1); 
 						#endif
 						
+						}
+						
+						/*获取加速度*/
+						if (inv_get_sensor_type_accel(data, &accuracy,(inv_time_t*)&timestamp))
+						{																									
+						#ifdef USE_USART_DISPLAY
+									sprintf ( cStr_2, "accel_x :  %.4f  ", data[0]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.
+									//LCD_DisplayStringLine(LINE(7),(uint8_t* )cStr_1);			
+									printf("%s \n", (uint8_t* )cStr_2); //输出
+									
+									sprintf ( cStr_2, "accel_y  :  %.4f  ", data[1]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.
+									//LCD_DisplayStringLine(LINE(8),(uint8_t* )cStr_1);	
+									printf("%s \n", (uint8_t* )cStr_2); //输出
+									
+									sprintf ( cStr_2, "accel_z   :  %.4f  ", data[2]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.
+									//LCD_DisplayStringLine(LINE(9),(uint8_t* )cStr_1);	
+									printf("%s \n", (uint8_t* )cStr_2); //输出
+
+						#endif
+							
 						}
 						
 					/*获取步数*/        
