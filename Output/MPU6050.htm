@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\..\Output\MPU6050.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\MPU6050.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 24 16:56:01 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Dec 25 16:03:42 2019
 <BR><P>
-<H3>Maximum Stack Usage =        680 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        752 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; read_from_mpl &rArr; _MLPrintLog &rArr; vsprintf
 <P>
@@ -1588,7 +1588,6 @@ Global Symbols
 <P><STRONG><a name="[168]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_GetFlagStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputcc
 </UL>
 
 <P><STRONG><a name="[106]"></a>USART_Init</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, stm32f4xx_usart.o(i.USART_Init))
@@ -1605,7 +1604,6 @@ Global Symbols
 
 <P><STRONG><a name="[167]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_SendData))
 <BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
-<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputcc
 </UL>
 
 <P><STRONG><a name="[6]"></a>UsageFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.UsageFault_Handler))
@@ -2010,7 +2008,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[165]"></a>eMPL_send_data</STRONG> (Thumb, 386 bytes, Stack size 40 bytes, log_stm32.o(i.eMPL_send_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = eMPL_send_data &rArr; fputcc
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = eMPL_send_data
 </UL>
 <BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputcc
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
@@ -2018,8 +2016,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_from_mpl
 </UL>
 
-<P><STRONG><a name="[166]"></a>eMPL_send_quat</STRONG> (Thumb, 182 bytes, Stack size 40 bytes, log_stm32.o(i.eMPL_send_quat))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = eMPL_send_quat &rArr; fputcc
+<P><STRONG><a name="[166]"></a>eMPL_send_quat</STRONG> (Thumb, 182 bytes, Stack size 32 bytes, log_stm32.o(i.eMPL_send_quat))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = eMPL_send_quat
 </UL>
 <BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputcc
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
@@ -2035,13 +2033,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0printf)
 </UL>
-<P><STRONG><a name="[131]"></a>fputcc</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, log_stm32.o(i.fputcc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fputcc
-</UL>
-<BR>[Calls]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-</UL>
-<BR>[Called By]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMPL_send_quat
+<P><STRONG><a name="[131]"></a>fputcc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, log_stm32.o(i.fputcc))
+<BR><BR>[Called By]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMPL_send_quat
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eMPL_send_data
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_MLPrintLog
 </UL>
@@ -2693,7 +2686,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[66]"></a>main</STRONG> (Thumb, 764 bytes, Stack size 88 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 680<LI>Call Chain = main &rArr; read_from_mpl &rArr; _MLPrintLog &rArr; vsprintf
+<BR><BR>[Stack]<UL><LI>Max Depth = 752<LI>Call Chain = main &rArr; read_from_mpl &rArr; _MLPrintLog &rArr; vsprintf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
@@ -3140,8 +3133,8 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1b5]"></a>read_from_mpl</STRONG> (Thumb, 842 bytes, Stack size 248 bytes, main.o(i.read_from_mpl))
-<BR><BR>[Stack]<UL><LI>Max Depth = 592<LI>Call Chain = read_from_mpl &rArr; _MLPrintLog &rArr; vsprintf
+<P><STRONG><a name="[1b5]"></a>read_from_mpl</STRONG> (Thumb, 970 bytes, Stack size 320 bytes, main.o(i.read_from_mpl))
+<BR><BR>[Stack]<UL><LI>Max Depth = 664<LI>Call Chain = read_from_mpl &rArr; _MLPrintLog &rArr; vsprintf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_temperature
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inv_get_sensor_type_rot_mat

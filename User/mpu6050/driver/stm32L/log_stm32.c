@@ -40,12 +40,12 @@
 int fputcc(int ch)
 {
 		/* 发送一个字节数据到USART1 */
-		USART_SendData(DEBUG_USART, (uint8_t) ch);
+		//USART_SendData(DEBUG_USART, (uint8_t) ch);
 		
 		/* 等待发送完毕 */
-		while (USART_GetFlagStatus(DEBUG_USART, USART_FLAG_TXE) == RESET);		
+		//while (USART_GetFlagStatus(DEBUG_USART, USART_FLAG_TXE) == RESET);		
 	
-		return (ch);
+		//return (ch);
 }
 /**
  *  @brief      Prints a variable argument log message.

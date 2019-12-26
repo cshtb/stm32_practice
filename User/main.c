@@ -358,8 +358,9 @@ static void read_from_mpl(void)//从陀螺仪中读取数据
 		/****************************使用串口助手显示****************************/
     if(1)
     {
-				char cStr_1 [ 70 ];
+				char cStr_1 [70];
 				char cStr_2 [70];
+				char cStr_3 [70];
 				unsigned long timestamp_1,step_count_1,walk_time_1;
 
 			
@@ -405,6 +406,23 @@ static void read_from_mpl(void)//从陀螺仪中读取数据
 									sprintf ( cStr_2, "accel_z   :  %.4f  ", data[2]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.
 									//LCD_DisplayStringLine(LINE(9),(uint8_t* )cStr_1);	
 									printf("%s \n", (uint8_t* )cStr_2); //输出
+
+						#endif
+							
+						}
+						
+						/*获取角速度*/
+						if (inv_get_sensor_type_gyro(data, &accuracy,(inv_time_t*)&timestamp))
+						{																									
+						#ifdef USE_USART_DISPLAY
+									sprintf ( cStr_3, "gyro_x :  %.4f  ", data[0]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.		
+									printf("%s \n", (uint8_t* )cStr_3); //输出角速度
+									
+									sprintf ( cStr_3, "gyro_y  :  %.4f  ", data[1]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.	
+									printf("%s \n", (uint8_t* )cStr_3); //输出角速度
+									
+									sprintf ( cStr_3, "gyro_z   :  %.4f  ", data[2]*1.0/(1<<16) );	//inv_get_sensor_type_accel读出的数据是Q16格式，所以左移16位.
+									printf("%s \n", (uint8_t* )cStr_3); //输出角速度
 
 						#endif
 							
@@ -686,19 +704,19 @@ static void handle_input(void)
         break;
 #endif
     case 'e':
-        hal.report ^= PRINT_EULER;
+        hal.report ^= PRINT_EULER;//打印出欧拉角信息
         break;
     case 'r':
-        hal.report ^= PRINT_ROT_MAT;
+        hal.report ^= PRINT_ROT_MAT;//打印出旋转矩阵数据
         break;
     case 'q':
-        hal.report ^= PRINT_QUAT;
+        hal.report ^= PRINT_QUAT;//打印四元数
         break;
     case 'h':
         hal.report ^= PRINT_HEADING;
         break;
     case 'i':
-        hal.report ^= PRINT_LINEAR_ACCEL;
+        hal.report ^= PRINT_LINEAR_ACCEL;//打印线性加速度数据
         break;
     case 'o':
         hal.report ^= PRINT_GRAVITY_VECTOR;
